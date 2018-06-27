@@ -36,6 +36,7 @@ public class FileOpenPanel extends JPanel{
     private JLabel textAppName;
     private JTextField textFileLocation;
     private JButton btnFileOpen;
+    private JButton btnStartParsing;
 
     public FileOpenPanel() {
         super();
@@ -55,6 +56,19 @@ public class FileOpenPanel extends JPanel{
         layout.putConstraint(SpringLayout.NORTH, textAppName, 0, SpringLayout.NORTH, this);
         this.add(textAppName);
         
+        
+        btnStartParsing = new JButton("Parsing");
+        btnStartParsing.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                
+            }
+        });
+        layout.putConstraint(SpringLayout.EAST, btnStartParsing, -5, SpringLayout.EAST, this);
+        layout.putConstraint(SpringLayout.NORTH, btnStartParsing, 5, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.VERTICAL_CENTER, btnStartParsing, 0, SpringLayout.VERTICAL_CENTER, this);
+        this.add(btnStartParsing);
       
         
         btnFileOpen = new JButton("Open");
@@ -71,7 +85,7 @@ public class FileOpenPanel extends JPanel{
                 }
             }
         });
-        layout.putConstraint(SpringLayout.EAST, btnFileOpen, -5, SpringLayout.EAST, this);
+        layout.putConstraint(SpringLayout.EAST, btnFileOpen, -5, SpringLayout.WEST, btnStartParsing);
         layout.putConstraint(SpringLayout.NORTH, btnFileOpen, 5, SpringLayout.NORTH, this);
         layout.putConstraint(SpringLayout.VERTICAL_CENTER, btnFileOpen, 0, SpringLayout.VERTICAL_CENTER, this);
         this.add(btnFileOpen);

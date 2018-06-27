@@ -26,6 +26,12 @@ public class LanguageTabPanel extends JPanel {
     
     public LanguageTabPanel() {
         super();
+        
+        String[] langs = new String[4];
+        langs[0] = "All";
+        langs[1] = "Ko";
+        langs[2] = "En";
+        setLanguage(langs);
     }
     
     public void setLanguage(String[] langs) {
@@ -33,7 +39,7 @@ public class LanguageTabPanel extends JPanel {
         
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
-        this.setBackground(colors.OSTypeBG);
+        this.setBackground(colors.LanguageBG);
         
         for (String lang : langs) {
             btn = new JButton(lang);

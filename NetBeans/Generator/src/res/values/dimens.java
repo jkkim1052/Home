@@ -16,7 +16,7 @@ public class dimens {
     public static final Dimension fileopenPanel = new Dimension(960, 40);
     public static final Dimension ostypePanel = new Dimension(200, 500);
     public static final Dimension langPanel = new Dimension(760, 500);
-    public static final Dimension emptyPanel = new Dimension(50, 100);
+    public static final Dimension langTabPanel = new Dimension(50, 500);
     
     
     /**
@@ -36,7 +36,7 @@ public class dimens {
      * Language Panel View Size
      */
     public static final Dimension btnLanguage = new Dimension(50, 50);
-    
+    public static final Dimension btnLanguageSave = new Dimension(100,50);
     
     
     /**

@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import res.values.colors;
+import res.values.dimens;
 
 /**
  *
@@ -38,12 +39,24 @@ public class LanguagePanel extends JPanel {
         this.setLayout(layout);
         this.setBackground(colors.LanguageBG);
         
+        LanguageTabPanel tabPanel = new LanguageTabPanel();
+        tabPanel.setPreferredSize(dimens.langTabPanel);
+        layout.putConstraint(SpringLayout.WEST, tabPanel, CONTENT_MARGIN, SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.NORTH, tabPanel, CONTENT_MARGIN, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.SOUTH, tabPanel, -CONTENT_MARGIN, SpringLayout.SOUTH, this);
+        this.add(tabPanel);
+        
+        JButton btnSave = new JButton("Save");
+        btnSave.setPreferredSize(dimens.btnLanguageSave);
+        layout.putConstraint(SpringLayout.EAST, btnSave, -CONTENT_MARGIN, SpringLayout.EAST, this);
+        layout.putConstraint(SpringLayout.SOUTH, btnSave, -CONTENT_MARGIN, SpringLayout.SOUTH, this);
+        this.add(btnSave);
+        
         list = new JList<>();
         scrollPane = new JScrollPane(list);
-        
-        layout.putConstraint(SpringLayout.EAST, scrollPane, -CONTENT_MARGIN, SpringLayout.EAST, this);
+        layout.putConstraint(SpringLayout.WEST, scrollPane, 0, SpringLayout.EAST, tabPanel);
+        layout.putConstraint(SpringLayout.EAST, scrollPane, -CONTENT_MARGIN, SpringLayout.WEST, btnSave);
         layout.putConstraint(SpringLayout.NORTH, scrollPane, CONTENT_MARGIN, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.WEST, scrollPane, CONTENT_MARGIN, SpringLayout.WEST, this);
         layout.putConstraint(SpringLayout.SOUTH, scrollPane, -CONTENT_MARGIN, SpringLayout.SOUTH, this);
         this.add(scrollPane);
         
