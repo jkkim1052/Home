@@ -69,11 +69,11 @@ public class OSTypePanel extends JPanel {
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             String name = e.getActionCommand();
             
-            if (BTN.ANDROID.name().equals(name)) {
+            if (BTN.ANDROID.name.equals(name)) {
                 
-            } else if (BTN.IOS.name().equals(name)) {
+            } else if (BTN.IOS.name.equals(name)) {
                 
-            } else if (BTN.JSON.name().equals(name)) {
+            } else if (BTN.JSON.name.equals(name)) {
                 
             }
             

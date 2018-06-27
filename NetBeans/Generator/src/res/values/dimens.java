@@ -32,6 +32,12 @@ public class dimens {
     
     
     
+    /**
+     * Language Panel View Size
+     */
+    public static final Dimension btnLanguage = new Dimension(50, 50);
+    
+    
     
     /**
      * Define int Size
