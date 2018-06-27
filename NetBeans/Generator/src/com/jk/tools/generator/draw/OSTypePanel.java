@@ -5,14 +5,18 @@
  */
 package com.jk.tools.generator.draw;
 
-import com.jk.tools.generator.values.dimens;
 import java.awt.Button;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import res.values.colors;
+import res.values.dimens;
 
 /**
  *
@@ -21,28 +25,42 @@ import javax.swing.JPanel;
 public class OSTypePanel extends JPanel {
     
     private enum BTN {
-        ANDROID, IOS, JSON
+        ANDROID("Android", "res/drawable/btn_android.png"), 
+        IOS("iOS", "res/drawable/btn_ios.pna"), 
+        JSON("Json", "res/drawable/btn_json.png");
+        
+        public String name;
+        public String image;
+        BTN(String name, String image) {
+            this.name = name;
+            this.image = image;
+        }
     }
     
-    private Button os;
+    private JButton os;
     
     public OSTypePanel() {
         super();
         
-//        BoxLayout layout = new BoxLayout(this, 1);
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
+        this.setBackground(colors.OSTypeBG);
         
         for (BTN btn : BTN.values()) {
-            os = new Button();
-            os.setName(btn.name());
+            os = new JButton(btn.name);
+            os.setIcon(new ImageIcon(btn.image));
             os.addActionListener(onClick);
             os.setActionCommand(btn.name());
+            
             os.setPreferredSize(dimens.btnOSType);
+            os.setForeground(colors.OSButtonText);
+            os.setBackground(colors.OSButtonBG);
+            os.setBorderPainted(false);
+            os.setOpaque(true);
             this.add(os);
         }
         
-        this.setOpaque(false);
+        this.setOpaque(true);
     }
     
     private ActionListener onClick = new ActionListener() {

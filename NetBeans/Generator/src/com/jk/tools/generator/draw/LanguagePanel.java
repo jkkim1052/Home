@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import res.values.colors;
 
 /**
  *
@@ -27,23 +28,26 @@ public class LanguagePanel extends JPanel {
     
     private JList<String> list;
     private JScrollPane scrollPane;
+    
+    private static final int CONTENT_MARGIN = 10;
 
     public LanguagePanel() {
         super();
         
         SpringLayout layout = new SpringLayout();
         this.setLayout(layout);
+        this.setBackground(colors.LanguageBG);
         
         list = new JList<>();
         scrollPane = new JScrollPane(list);
         
-        layout.putConstraint(SpringLayout.EAST, scrollPane, -5, SpringLayout.EAST, this);
-        layout.putConstraint(SpringLayout.NORTH, scrollPane, 5, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.WEST, scrollPane, 5, SpringLayout.WEST, this);
-        layout.putConstraint(SpringLayout.SOUTH, scrollPane, -5, SpringLayout.SOUTH, this);
-        
+        layout.putConstraint(SpringLayout.EAST, scrollPane, -CONTENT_MARGIN, SpringLayout.EAST, this);
+        layout.putConstraint(SpringLayout.NORTH, scrollPane, CONTENT_MARGIN, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, scrollPane, CONTENT_MARGIN, SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.SOUTH, scrollPane, -CONTENT_MARGIN, SpringLayout.SOUTH, this);
         this.add(scrollPane);
-        this.setOpaque(false);
+        
+        this.setOpaque(true);
     }
     
     public void setListItem(String[] items) {

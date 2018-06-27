@@ -9,7 +9,6 @@ import com.jk.tools.generator.draw.FileOpenPanel;
 import com.jk.tools.generator.draw.LanguagePanel;
 import com.jk.tools.generator.draw.OSTypePanel;
 import com.jk.tools.generator.util.DrawUI;
-import com.jk.tools.generator.values.dimens;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -31,6 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import res.values.dimens;
 
 
 /**
