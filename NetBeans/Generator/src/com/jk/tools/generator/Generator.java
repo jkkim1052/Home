@@ -7,7 +7,9 @@ package com.jk.tools.generator;
 
 import com.jk.tools.generator.draw.FileOpenPanel;
 import com.jk.tools.generator.draw.LanguagePanel;
+import com.jk.tools.generator.draw.OSTypePanel;
 import com.jk.tools.generator.util.DrawUI;
+import com.jk.tools.generator.values.dimens;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -40,6 +42,7 @@ public class Generator extends JFrame {
     private DrawUI drawUI = new DrawUI();
     
     private FileOpenPanel fileopenPanel;
+    private OSTypePanel ostypePanel;
     private LanguagePanel languagePanel;
     
     
@@ -59,44 +62,65 @@ public class Generator extends JFrame {
     public Generator() {
         initComponents();
 
+        this.setMinimumSize(dimens.mainPanel);
         this.setLayout(new BorderLayout());
         
-        p1 = new JPanel();
-        p1.setBackground(Color.red);
-        p2 = new JPanel();
-        p2.setBackground(Color.blue);
-        p3 = new JPanel();
-        p3.setBackground(Color.green);
-        p4 = new JPanel();
-        p4.setBackground(Color.cyan);
-        p4.setPreferredSize(new Dimension(100, 1));
+//        p1 = new JPanel();
+//        p1.setBackground(Color.red);
+//        p1.setPreferredSize(dimens.ostypePanel);
+//        p2 = new JPanel();
+//        p2.setBackground(Color.blue);
+//        p2.setPreferredSize(dimens.langPanel);
+//        p3 = new JPanel();
+//        p3.setBackground(Color.green);
+//        p3.setPreferredSize(dimens.emptyPanel);
+//        p4 = new JPanel();
+//        p4.setBackground(Color.cyan);
+//        p4.setPreferredSize(dimens.fileopenPanel);
         
-        this.add(p4, BorderLayout.PAGE_START);
-        this.add(p1, BorderLayout.LINE_START);
-        this.add(p2, BorderLayout.CENTER);
-        this.add(p3, BorderLayout.LINE_END);
+//        this.add(p4, BorderLayout.PAGE_START);
+//        this.add(p1, BorderLayout.LINE_START);
+//        this.add(p2, BorderLayout.CENTER);
+//        this.add(p3, BorderLayout.LINE_END);
        
         fileopenPanel = new FileOpenPanel();
-        p4.setLayout(new GridBagLayout());
-        GridBagConstraints panel = new GridBagConstraints();
-        panel.gridx = 0;
-        panel.gridy = 0;
-        panel.weightx = 1;
-        panel.weighty = 1;
-        panel.fill = GridBagConstraints.BOTH;
-        p4.add(fileopenPanel, panel);
+        fileopenPanel.setPreferredSize(dimens.fileopenPanel);
+        this.add(fileopenPanel, BorderLayout.PAGE_START);
+       
+//        p4.setLayout(new GridBagLayout());
+//        GridBagConstraints panel = new GridBagConstraints();
+//        panel.gridx = 0;
+//        panel.gridy = 0;
+//        panel.weightx = 1;
+//        panel.weighty = 1;
+//        panel.fill = GridBagConstraints.BOTH;
+//        p4.add(fileopenPanel, panel);
+        
+        ostypePanel = new OSTypePanel();
+        ostypePanel.setPreferredSize(dimens.ostypePanel);
+        this.add(ostypePanel, BorderLayout.LINE_START);
+//        p1.setLayout(new GridBagLayout());
+//        p1.add(ostypePanel, panel);
         
         languagePanel = new LanguagePanel();
-        p2.setLayout(new GridBagLayout());
-        p2.add(languagePanel, panel);
+        languagePanel.setPreferredSize(dimens.langPanel);
+        this.add(languagePanel, BorderLayout.CENTER);
+//        p2.setLayout(new GridBagLayout());
+//        p2.add(languagePanel, panel);
         ArrayList<String> sample = new ArrayList<>();
         sample.add("all");
         sample.add("ko");
         sample.add("en");
-        String[] sample2 = new String[3];
+        String[] sample2 = new String[9];
         sample2[0] = "all";
         sample2[1] = "ko";
         sample2[2] = "en";
+        sample2[3] = "all";
+        sample2[4] = "ko";
+        sample2[5] = "en";
+        sample2[6] = "all";
+        sample2[7] = "ko";
+        sample2[8] = "en";
         languagePanel.setListItem(sample2);
         
 
