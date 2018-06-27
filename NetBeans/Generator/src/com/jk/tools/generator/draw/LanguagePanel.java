@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -25,6 +26,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class LanguagePanel extends JPanel {
     
     private JList<String> list;
+    private JScrollPane scrollPane;
 
     public LanguagePanel() {
         super();
@@ -33,13 +35,14 @@ public class LanguagePanel extends JPanel {
         this.setLayout(layout);
         
         list = new JList<>();
+        scrollPane = new JScrollPane(list);
         
-        layout.putConstraint(SpringLayout.EAST, list, -5, SpringLayout.EAST, this);
-        layout.putConstraint(SpringLayout.NORTH, list, 5, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.WEST, list, 5, SpringLayout.WEST, this);
-        layout.putConstraint(SpringLayout.SOUTH, list, -5, SpringLayout.SOUTH, this);
-        this.add(list);
+        layout.putConstraint(SpringLayout.EAST, scrollPane, -5, SpringLayout.EAST, this);
+        layout.putConstraint(SpringLayout.NORTH, scrollPane, 5, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, scrollPane, 5, SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.SOUTH, scrollPane, -5, SpringLayout.SOUTH, this);
         
+        this.add(scrollPane);
         this.setOpaque(false);
     }
     
