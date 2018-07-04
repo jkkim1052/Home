@@ -10,5 +10,10 @@ package com.jk.tools.generator.util;
  * @author jonggwonkim
  */
 public class StringUtil {
+    private static StringUtil instance = new StringUtil();
+    private StringUtil() {}
     
+    public static StringUtil getInstance() {
+        return instance;
+    }
 }

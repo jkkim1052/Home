@@ -5,31 +5,16 @@
  */
 package com.jk.tools.generator;
 
-import com.jk.tools.generator.draw.FileOpenPanel;
-import com.jk.tools.generator.draw.LanguagePanel;
-import com.jk.tools.generator.draw.OSTypePanel;
+import com.jk.tools.generator.ui.FileOpenPanel;
+import com.jk.tools.generator.ui.LanguagePanel;
+import com.jk.tools.generator.ui.OSTypePanel;
 import com.jk.tools.generator.util.DrawUI;
 import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.GridBagLayout;
 import java.util.ArrayList;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import res.values.dimens;
 
 
@@ -39,153 +24,26 @@ import res.values.dimens;
  */
 public class Generator extends JFrame {
     
-    private DrawUI drawUI = new DrawUI();
-    
-    private FileOpenPanel fileopenPanel;
-    private OSTypePanel ostypePanel;
-    private LanguagePanel languagePanel;
-    
-    
-    
-    
-    
-    
-    
-    private JPanel p1;
-    private JPanel p2;
-    private JPanel p3;
-    private JPanel p4;
-    
+    private MainPanel mainPanel;
     /**
-     * Creates new form Generator
+     * Creates new form Generator use Borderlayout
      */
     public Generator() {
         initComponents();
 
         this.setMinimumSize(dimens.mainPanel);
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridBagLayout());
         
-//        p1 = new JPanel();
-//        p1.setBackground(Color.red);
-//        p1.setPreferredSize(dimens.ostypePanel);
-//        p2 = new JPanel();
-//        p2.setBackground(Color.blue);
-//        p2.setPreferredSize(dimens.langPanel);
-//        p3 = new JPanel();
-//        p3.setBackground(Color.green);
-//        p3.setPreferredSize(dimens.emptyPanel);
-//        p4 = new JPanel();
-//        p4.setBackground(Color.cyan);
-//        p4.setPreferredSize(dimens.fileopenPanel);
+        GridBagConstraints layout = new GridBagConstraints();
+        layout.gridx = 0;
+        layout.gridy = 0;
+        layout.weightx = 1;
+        layout.weighty = 1;
+        layout.fill = GridBagConstraints.BOTH;
         
-//        this.add(p4, BorderLayout.PAGE_START);
-//        this.add(p1, BorderLayout.LINE_START);
-//        this.add(p2, BorderLayout.CENTER);
-//        this.add(p3, BorderLayout.LINE_END);
-       
-        fileopenPanel = new FileOpenPanel();
-        fileopenPanel.setPreferredSize(dimens.fileopenPanel);
-        this.add(fileopenPanel, BorderLayout.PAGE_START);
-       
-//        p4.setLayout(new GridBagLayout());
-//        GridBagConstraints panel = new GridBagConstraints();
-//        panel.gridx = 0;
-//        panel.gridy = 0;
-//        panel.weightx = 1;
-//        panel.weighty = 1;
-//        panel.fill = GridBagConstraints.BOTH;
-//        p4.add(fileopenPanel, panel);
+        mainPanel = new MainPanel();
         
-        ostypePanel = new OSTypePanel();
-        ostypePanel.setPreferredSize(dimens.ostypePanel);
-        this.add(ostypePanel, BorderLayout.LINE_START);
-//        p1.setLayout(new GridBagLayout());
-//        p1.add(ostypePanel, panel);
-        
-        languagePanel = new LanguagePanel();
-        languagePanel.setPreferredSize(dimens.langPanel);
-        this.add(languagePanel, BorderLayout.CENTER);
-//        p2.setLayout(new GridBagLayout());
-//        p2.add(languagePanel, panel);
-        ArrayList<String> sample = new ArrayList<>();
-        sample.add("all");
-        sample.add("ko");
-        sample.add("en");
-        String[] sample2 = new String[9];
-        sample2[0] = "all";
-        sample2[1] = "ko";
-        sample2[2] = "en";
-        sample2[3] = "all";
-        sample2[4] = "ko";
-        sample2[5] = "en";
-        sample2[6] = "all";
-        sample2[7] = "ko";
-        sample2[8] = "en";
-        languagePanel.setListItem(sample2);
-        
-
-
-        // GridBagLayout 작업 중 그리드 배치완료 / 사이즈 맞지 않음
-//        this.setLayout(new GridBagLayout());
-//        GridBagConstraints grid = new GridBagConstraints();
-//        
-//        p1 = new JPanel();
-//        p1.setBackground(Color.red);
-//        p2 = new JPanel();
-//        p2.setBackground(Color.blue);
-//        p3 = new JPanel();
-//        p3.setBackground(Color.green);
-//        p4 = new JPanel();
-//        p4.setBackground(Color.cyan);
-//        p4.setSize(new Dimension(1, 100));
-//        
-//        grid.fill = GridBagConstraints.BOTH;
-//        grid.gridwidth = 3;
-//        grid.weightx = 1;
-//        grid.weighty = 1;
-////        grid.insets = new Insets(10, 10, 10, 10);
-//        grid.gridx = 0;
-//        grid.gridy = 0;
-//        this.add(p4, grid);
-//        
-//        grid.weightx = 1;
-//        grid.gridwidth = 1;
-//        grid.gridx = 0;
-//        grid.gridy = 1;
-//        this.add(p1, grid);
-//        
-//        grid.gridx = 1;
-//        grid.gridy = 1;
-//        this.add(p2, grid);
-//        
-//        grid.gridx = 2;
-//        grid.gridy = 1;
-//        this.add(p3, grid);
-//        
-//        
-//        
-//        fileopenPanel = new FileOpenPanel();
-//        p4.setLayout(new GridBagLayout());
-//        GridBagConstraints panel = new GridBagConstraints();
-//        panel.gridx = 0;
-//        panel.gridy = 0;
-//        panel.weightx = 1;
-//        panel.weighty = 1;
-//        panel.fill = GridBagConstraints.BOTH;
-//        p4.add(fileopenPanel, panel);
-//        
-//        languagePanel = new LanguagePanel();
-//        p2.setLayout(new GridBagLayout());
-//        p2.add(languagePanel, panel);
-//        ArrayList<String> sample = new ArrayList<>();
-//        sample.add("all");
-//        sample.add("ko");
-//        sample.add("en");
-//        String[] sample2 = new String[3];
-//        sample2[0] = "all";
-//        sample2[1] = "ko";
-//        sample2[2] = "en";
-//        languagePanel.setListItem(sample2);
+        this.add(mainPanel, layout);
     }
 
     /**

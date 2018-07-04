@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jk.tools.generator.draw;
+package com.jk.tools.generator.ui;
 
 import java.awt.Button;
 import java.awt.FlowLayout;
@@ -24,14 +24,17 @@ import res.values.dimens;
  */
 public class OSTypePanel extends JPanel {
     
-    private enum BTN {
+    private OnOSTypeSelect listener;
+    
+    public enum OSType {
+        EXCEL("Excel", ""),
         ANDROID("Android", "res/drawable/btn_android.png"), 
         IOS("iOS", "res/drawable/btn_ios.pna"), 
         JSON("Json", "res/drawable/btn_json.png");
         
         public String name;
         public String image;
-        BTN(String name, String image) {
+        OSType(String name, String image) {
             this.name = name;
             this.image = image;
         }
@@ -39,18 +42,18 @@ public class OSTypePanel extends JPanel {
     
     private JButton os;
     
-    public OSTypePanel() {
+    public OSTypePanel(OnOSTypeSelect l) {
         super();
         
         FlowLayout layout = new FlowLayout();
         this.setLayout(layout);
         this.setBackground(colors.OSTypeBG);
         
-        for (BTN btn : BTN.values()) {
-            os = new JButton(btn.name);
-            os.setIcon(new ImageIcon(btn.image));
+        for (OSType type : OSType.values()) {
+            os = new JButton(type.name);
+            os.setIcon(new ImageIcon(type.image));
             os.addActionListener(onClick);
-            os.setActionCommand(btn.name());
+            os.setActionCommand(type.name());
             
             os.setPreferredSize(dimens.btnOSType);
             os.setForeground(colors.OSButtonText);
@@ -61,6 +64,7 @@ public class OSTypePanel extends JPanel {
         }
         
         this.setOpaque(true);
+        this.listener = l;
     }
     
     private ActionListener onClick = new ActionListener() {
@@ -68,17 +72,30 @@ public class OSTypePanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             String name = e.getActionCommand();
+            OSType type = null;
             
-            if (BTN.ANDROID.name.equals(name)) {
+            if (OSType.EXCEL.name.equals(name)) {
                 
-            } else if (BTN.IOS.name.equals(name)) {
+            } else if (OSType.ANDROID.name.equals(name)) {
                 
-            } else if (BTN.JSON.name.equals(name)) {
+            } else if (OSType.IOS.name.equals(name)) {
+                
+            } else if (OSType.JSON.name.equals(name)) {
                 
             }
             
+            for (OSType t:OSType.values()) {
+                if(t.name.equals(name))
+                    type = t;
+            }
+            if (type == null) type = OSType.EXCEL;
             
             JOptionPane.showMessageDialog(os, name);
+            listener.selectType(type);
         }
     };
+    
+    public interface OnOSTypeSelect {
+        public void selectType(OSType type);
+    }
 }
