@@ -50,14 +50,9 @@ public class ExcelDataPanel extends JPanel {
             items.add("Test");
         }
         
+        String[] arr = new String[items.size()]; 
+        arr = items.toArray(arr);
         
-        
-        
-        Log.d();
-        if (items.toArray() instanceof String[]) {
-            list.setListData((String[])items.toArray());
-            
-            Log.d("Set Data");
-        }
+        list.setListData(arr);
     }
 }
